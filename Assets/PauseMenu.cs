@@ -4,10 +4,15 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
-    public void Pause()
+    public void Toggle()
     {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0;
+        if (Time.timeScale == 0) {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+        } else {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void Home()
@@ -18,8 +23,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1;
+        if (Time.timeScale == 0) {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+        }
+        
     }
 
     public void Restart()
